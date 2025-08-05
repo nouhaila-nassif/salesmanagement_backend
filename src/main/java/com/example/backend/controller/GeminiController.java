@@ -91,6 +91,7 @@ public class GeminiController {
 //    }
 //
 
+    //ajouter le creation de cmd dans meme post
     @PostMapping(
             value = "/ask-json",
             consumes = MediaType.APPLICATION_JSON_VALUE,
