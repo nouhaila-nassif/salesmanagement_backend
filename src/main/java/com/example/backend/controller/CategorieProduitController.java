@@ -1,10 +1,10 @@
 package com.example.backend.controller;
 
-import com.example.backend.dto.CatégorieProduitDTO;
+import com.example.backend.dto.CategorieProduitDTO;
 import com.example.backend.entity.Administrateur;
-import com.example.backend.entity.CatégorieProduit;
+import com.example.backend.entity.CategorieProduit;
 import com.example.backend.entity.Utilisateur;
-import com.example.backend.service.CatégorieProduitService;
+import com.example.backend.service.CategorieProduitService;
 import com.example.backend.service.UtilisateurService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -15,10 +15,10 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/categories")
-public class CatégorieProduitController {
+public class CategorieProduitController {
 
     @Autowired
-    private CatégorieProduitService service;
+    private CategorieProduitService service;
     @Autowired
     private UtilisateurService utilisateurService;
 
@@ -33,26 +33,26 @@ public class CatégorieProduitController {
     }
 
     @PostMapping
-    public CatégorieProduit create(@RequestBody CatégorieProduitDTO categorieDTO) {
+    public CategorieProduit create(@RequestBody CategorieProduitDTO categorieDTO) {
         getCurrentAdmin();
-        CatégorieProduit categorie = new CatégorieProduit();
+        CategorieProduit categorie = new CategorieProduit();
         categorie.setNom(categorieDTO.getNom());
         categorie.setDescription(categorieDTO.getDescription());
         return service.create(categorie);
     }
 
     @GetMapping
-    public List<CatégorieProduit> getAll() {
+    public List<CategorieProduit> getAll() {
         return service.getAll();
     }
 
     @GetMapping("/{id}")
-    public CatégorieProduit getById(@PathVariable Long id) {
+    public CategorieProduit getById(@PathVariable Long id) {
         return service.getById(id);
     }
 
     @PutMapping("/{id}")
-    public CatégorieProduit update(@PathVariable Long id, @RequestBody CatégorieProduit categorie) {
+    public CategorieProduit update(@PathVariable Long id, @RequestBody CategorieProduit categorie) {
         getCurrentAdmin(); // Vérifie que c'est un admin
         return service.update(id, categorie);
     }

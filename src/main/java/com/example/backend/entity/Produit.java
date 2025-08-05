@@ -1,11 +1,8 @@
 package com.example.backend.entity;
 
 import com.fasterxml.jackson.annotation.*;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.persistence.*;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
@@ -33,7 +30,7 @@ public class Produit {
 
     @ManyToOne
     @JsonBackReference // ou @JsonIgnore si tu ne veux pas remonter la catégorie
-    private CatégorieProduit categorie;
+    private CategorieProduit categorie;
 
     @ManyToMany
     @JoinTable(name = "promotion_produit")
@@ -123,11 +120,11 @@ public class Produit {
         this.imageBase64 = imageBase64;
     }
 
-    public CatégorieProduit getCategorie() {
+    public CategorieProduit getCategorie() {
         return categorie;
     }
 
-    public void setCategorie(CatégorieProduit categorie) {
+    public void setCategorie(CategorieProduit categorie) {
         this.categorie = categorie;
     }
 

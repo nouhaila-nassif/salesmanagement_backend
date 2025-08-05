@@ -40,7 +40,7 @@ public class PromotionDTO {
     private Integer quantiteOfferte;
 
     // Catégorie complète
-    private CatégorieProduitDTO categorie;
+    private CategorieProduitDTO categorie;
 
     // --- Constructeurs ---
     public PromotionDTO() {}
@@ -69,7 +69,7 @@ public class PromotionDTO {
         this.quantiteOfferte = promo.getQuantiteOfferte();
 
         if (promo.getCategorie() != null) {
-            this.categorie = new CatégorieProduitDTO(
+            this.categorie = new CategorieProduitDTO(
                     promo.getCategorie().getId(),
                     promo.getCategorie().getNom(),
                     promo.getCategorie().getDescription()
@@ -115,6 +115,6 @@ public class PromotionDTO {
     public Integer getQuantiteOfferte() { return quantiteOfferte; }
     public void setQuantiteOfferte(Integer quantiteOfferte) { this.quantiteOfferte = quantiteOfferte; }
 
-    public CatégorieProduitDTO getCategorie() { return categorie; }
-    public void setCategorie(CatégorieProduitDTO categorie) { this.categorie = categorie; }
+    public CategorieProduitDTO getCategorie() { return categorie; }
+    public void setCategorie(CategorieProduitDTO categorie) { this.categorie = categorie; }
 }

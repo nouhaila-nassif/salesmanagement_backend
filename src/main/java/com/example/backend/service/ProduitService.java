@@ -1,9 +1,9 @@
 package com.example.backend.service;
 
-import com.example.backend.entity.CatégorieProduit;
+import com.example.backend.entity.CategorieProduit;
 import com.example.backend.entity.Produit;
 import com.example.backend.entity.Promotion;
-import com.example.backend.repository.CatégorieProduitRepository;
+import com.example.backend.repository.CategorieProduitRepository;
 import com.example.backend.repository.ProduitRepository;
 import com.example.backend.repository.PromotionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +20,7 @@ public class ProduitService {
     @Autowired
     private ProduitRepository produitRepository;
     @Autowired
-    private CatégorieProduitRepository catégorieProduitRepository;
+    private CategorieProduitRepository catégorieProduitRepository;
 
     public Produit createProduit(Produit produit) {
         return produitRepository.save(produit);
@@ -77,7 +77,7 @@ public class ProduitService {
         existing.setImageBase64(newData.getImageBase64());
 
         if (newData.getCategorie() != null && newData.getCategorie().getId() != null) {
-            Optional<CatégorieProduit> categorieOpt = catégorieProduitRepository.findById(newData.getCategorie().getId());
+            Optional<CategorieProduit> categorieOpt = catégorieProduitRepository.findById(newData.getCategorie().getId());
             categorieOpt.ifPresent(existing::setCategorie);
         }
 

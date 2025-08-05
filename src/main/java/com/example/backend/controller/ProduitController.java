@@ -5,12 +5,12 @@ import com.example.backend.dto.ProduitResponseDTO;
 import com.example.backend.dto.ProduitUpdateDTO;
 import com.example.backend.dto.PromotionDTO;
 import com.example.backend.entity.*;
-import com.example.backend.repository.CatégorieProduitRepository;
+import com.example.backend.repository.CategorieProduitRepository;
 import com.example.backend.repository.ProduitRepository;
 import com.example.backend.repository.PromotionRepository;
 import com.example.backend.repository.UtilisateurRepository;
 import com.example.backend.security.CustomUserDetailsService;
-import com.example.backend.service.CatégorieProduitService;
+import com.example.backend.service.CategorieProduitService;
 import com.example.backend.service.ProduitService;
 import com.example.backend.service.UtilisateurService;
 import jakarta.transaction.Transactional;
@@ -38,9 +38,9 @@ public class ProduitController {
     @Autowired
     private ProduitService produitService;
     @Autowired
-    private CatégorieProduitService categorieService;
+    private CategorieProduitService categorieService;
     @Autowired
-    private CatégorieProduitRepository categorieProduitRepository;
+    private CategorieProduitRepository categorieProduitRepository;
 
     @Autowired
     private UtilisateurService utilisateurService;
@@ -81,7 +81,7 @@ public class ProduitController {
             throw new IllegalArgumentException("categorieId is required");
         }
 
-        CatégorieProduit categorie = categorieProduitRepository.findById(dto.getCategorieId())
+        CategorieProduit categorie = categorieProduitRepository.findById(dto.getCategorieId())
                 .orElseThrow(() -> new RuntimeException("Catégorie introuvable avec ID: " + dto.getCategorieId()));
         produit.setCategorie(categorie);
 
@@ -205,7 +205,7 @@ public class ProduitController {
 
             // Catégorie
             if (produitDTO.getCategorieId() != null) {
-                CatégorieProduit categorie = categorieProduitRepository.findById(produitDTO.getCategorieId())
+                CategorieProduit categorie = categorieProduitRepository.findById(produitDTO.getCategorieId())
                         .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "Catégorie invalide"));
                 produit.setCategorie(categorie);
             }

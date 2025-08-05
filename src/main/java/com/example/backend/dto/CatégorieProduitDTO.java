@@ -1,13 +1,13 @@
 package com.example.backend.dto;
 
-public class CatégorieProduitDTO {
+public class CategorieProduitDTO {
     private Long id;
     private String nom;
     private String description;
 
-    public CatégorieProduitDTO() {}
+    public CategorieProduitDTO() {}
 
-    public CatégorieProduitDTO(Long id, String nom, String description) {
+    public CategorieProduitDTO(Long id, String nom, String description) {
         this.id = id;
         this.nom = nom;
         this.description = description;

@@ -14,7 +14,7 @@ import java.util.Set;
 @JsonIgnoreProperties({"produits", "promotions"})
 
 @Entity
-public class CatégorieProduit {
+public class CategorieProduit {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

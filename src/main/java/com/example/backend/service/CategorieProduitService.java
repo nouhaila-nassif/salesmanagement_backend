@@ -1,33 +1,33 @@
 package com.example.backend.service;
 
-import com.example.backend.entity.CatégorieProduit;
-import com.example.backend.repository.CatégorieProduitRepository;
+import com.example.backend.entity.CategorieProduit;
+import com.example.backend.repository.CategorieProduitRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class CatégorieProduitService {
+public class CategorieProduitService {
 
     @Autowired
-    private CatégorieProduitRepository catégorieProduitRepository;
+    private CategorieProduitRepository catégorieProduitRepository;
 
-    public CatégorieProduit create(CatégorieProduit categorie) {
+    public CategorieProduit create(CategorieProduit categorie) {
         return catégorieProduitRepository.save(categorie);
     }
 
-    public List<CatégorieProduit> getAll() {
+    public List<CategorieProduit> getAll() {
         return catégorieProduitRepository.findAll();
     }
 
-    public CatégorieProduit getById(Long id) {
+    public CategorieProduit getById(Long id) {
         return catégorieProduitRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Catégorie non trouvée"));
     }
 
-    public CatégorieProduit update(Long id, CatégorieProduit newData) {
-        CatégorieProduit existing = getById(id);
+    public CategorieProduit update(Long id, CategorieProduit newData) {
+        CategorieProduit existing = getById(id);
         existing.setNom(newData.getNom());
         return catégorieProduitRepository.save(existing);
     }

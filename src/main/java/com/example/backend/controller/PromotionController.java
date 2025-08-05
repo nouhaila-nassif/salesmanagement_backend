@@ -2,7 +2,7 @@ package com.example.backend.controller;
 
 import com.example.backend.dto.PromotionDTO;
 import com.example.backend.entity.*;
-import com.example.backend.repository.CatégorieProduitRepository;
+import com.example.backend.repository.CategorieProduitRepository;
 import com.example.backend.repository.ProduitRepository;
 import com.example.backend.repository.PromotionRepository;
 import com.example.backend.service.PromotionService;
@@ -26,7 +26,7 @@ public class PromotionController {
     @Autowired
     private UtilisateurService utilisateurService;
     @Autowired
-    private CatégorieProduitRepository catégorieProduitRepository;
+    private CategorieProduitRepository catégorieProduitRepository;
     @Autowired
     private PromotionService promotionService;
     @Autowired
@@ -75,7 +75,7 @@ public class PromotionController {
 
             // Catégorie ciblée (si applicable)
             if (promotionDTO.getCategorie() != null && promotionDTO.getCategorie().getId() != null) {
-                CatégorieProduit cat = catégorieProduitRepository.findById(promotionDTO.getCategorie().getId())
+                CategorieProduit cat = catégorieProduitRepository.findById(promotionDTO.getCategorie().getId())
                         .orElseThrow(() -> new RuntimeException("Catégorie introuvable"));
                 promotion.setCategorie(cat);
             }

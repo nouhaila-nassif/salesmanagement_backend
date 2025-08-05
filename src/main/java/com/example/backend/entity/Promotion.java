@@ -144,11 +144,11 @@ public class Promotion {
         this.seuilQuantite = seuilQuantite;
     }
 
-    public CatégorieProduit getCategorie() {
+    public CategorieProduit getCategorie() {
         return categorie;
     }
 
-    public void setCategorie(CatégorieProduit categorie) {
+    public void setCategorie(CategorieProduit categorie) {
         this.categorie = categorie;
     }
 
@@ -199,7 +199,7 @@ public class Promotion {
     // === CIBLAGE ===
     @ManyToOne
     @JoinColumn(name = "categorie_id")
-    private CatégorieProduit categorie;
+    private CategorieProduit categorie;
 
     @ManyToMany(mappedBy = "promotions", cascade = CascadeType.PERSIST)
     @JsonIgnore

@@ -1,14 +1,13 @@
 package com.example.backend.service;
 
 import com.example.backend.entity.*;
-import com.example.backend.repository.CatégorieProduitRepository;
+import com.example.backend.repository.CategorieProduitRepository;
 import com.example.backend.repository.ProduitRepository;
 import com.example.backend.repository.PromotionRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.math.BigDecimal;
 import java.time.temporal.ChronoUnit;
 import java.util.HashSet;
 import java.util.List;
@@ -16,7 +15,7 @@ import java.util.Set;
 @Service
 public class PromotionService {
     @Autowired
-    CatégorieProduitRepository catProdRepo;
+    CategorieProduitRepository catProdRepo;
     private final PromotionRepository promotionRepository;
     @Autowired
     private
@@ -34,7 +33,7 @@ public class PromotionService {
         Promotion promotion = promotionRepository.findById(promotionId)
                 .orElseThrow(() -> new RuntimeException("Promotion introuvable avec id : " + promotionId));
 
-        CatégorieProduit categorie = catProdRepo.findById(categorieId)
+        CategorieProduit categorie = catProdRepo.findById(categorieId)
                 .orElseThrow(() -> new RuntimeException("Catégorie introuvable avec id : " + categorieId));
 
         // Lier la promotion à la catégorie
@@ -48,7 +47,7 @@ public class PromotionService {
      * Retourne toutes les promotions liées à une catégorie donnée
      */
     public List<Promotion> getPromotionsParCategorie(Long categorieId) {
-        CatégorieProduit categorie = catProdRepo.findById(categorieId)
+        CategorieProduit categorie = catProdRepo.findById(categorieId)
                 .orElseThrow(() -> new RuntimeException("Catégorie introuvable avec id : " + categorieId));
 
         return promotionRepository.findByCategorie(categorie);
@@ -212,7 +211,7 @@ public class PromotionService {
         if (newData.getSeuilQuantite() != null) existing.setSeuilQuantite(newData.getSeuilQuantite());
 
         if (newData.getCategorie() != null && newData.getCategorie().getId() != null) {
-            CatégorieProduit categorie = catProdRepo.findById(newData.getCategorie().getId())
+            CategorieProduit categorie = catProdRepo.findById(newData.getCategorie().getId())
                     .orElseThrow(() -> new RuntimeException("Catégorie introuvable avec id : " + newData.getCategorie().getId()));
             existing.setCategorie(categorie);
         }
