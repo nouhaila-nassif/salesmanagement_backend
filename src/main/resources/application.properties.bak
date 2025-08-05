@@ -1,4 +1,4 @@
-﻿#spring.application.name=sales
+#spring.application.name=sales
 #spring.datasource.url=jdbc:sqlserver://localhost:1433;databaseName=salesmanagement;encrypt=true;trustServerCertificate=true
 #spring.datasource.username=sa
 #spring.datasource.password=sales
@@ -6,7 +6,7 @@
 #logging.level.org.springframework.orm.jpa=DEBUG
 spring.application.name=sales
 
-# Remplace localhost par le nom complet de ton serveur Azure (exemple donné)
+# Remplace localhost par le nom complet de ton serveur Azure (exemple donn�)
 spring.datasource.url=jdbc:sqlserver://sales-api-server.database.windows.net:1433;databaseName=salesmanagement;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;
 
 spring.datasource.username=adminuser
