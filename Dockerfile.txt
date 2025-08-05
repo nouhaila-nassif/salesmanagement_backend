@@ -1,0 +1,25 @@
+# Utilise une image officielle OpenJDK 17 (ou la version adaptée)
+FROM eclipse-temurin17-jdk
+
+# Définir le répertoire de travail dans le conteneur
+WORKDIR app
+
+# Copier le wrapper Maven et dossier .mvn pour utiliser mvnw
+COPY mvnw .
+COPY .mvn .mvn
+
+# Copier pom.xml et le dossier src
+COPY pom.xml .
+COPY src src
+
+# Rendre le wrapper Maven exécutable
+RUN chmod +x mvnw
+
+# Compiler le projet sans exécuter les tests
+RUN .mvnw clean package -DskipTests
+
+# Expose le port 8080 (ou celui que ton backend utilise)
+EXPOSE 8080
+
+# Commande pour lancer ton application Spring Boot
+CMD [java, -jar, targetbackend-0.0.1-SNAPSHOT.jar]
